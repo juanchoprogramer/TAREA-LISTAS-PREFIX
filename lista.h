@@ -35,7 +35,7 @@ public:
 		tamanio++;
 		return *this;
 	}
-	Lista operator --() {
+	Lista& operator --() {
 		int eliminar;
 		cout << "Posicion a eliminar:" << endl;
 		cin >> eliminar;

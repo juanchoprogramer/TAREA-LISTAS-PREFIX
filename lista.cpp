@@ -12,7 +12,6 @@ void Lista<Tareas>::agregar(Tareas informacion, Tareas valor) {
 		final->setSiguiente(aux);
 	}
 	final = aux;
-	tamanio++;
 }
 template <class Tareas>
 int Lista<Tareas>::getTamanio() const {
@@ -41,32 +40,35 @@ void Lista<Tareas>::mostrarLista() {
 }
 template <class Tareas>
 void Lista<Tareas>::eliminarNodo(int locacion) {
-	Nodo<Tareas>* aux = inicio->getSiguiente();
-	Nodo<Tareas>* anterior = inicio;
-	Nodo<Tareas>* ultimo = inicio;
-	apuntador = 1;
 	if (!vacia()) {
-		if (locacion == 1) {
-			eliminarNodoInicio(locacion);
+		Nodo<Tareas>* aux = inicio->getSiguiente();
+		Nodo<Tareas>* anterior = inicio;
+		Nodo<Tareas>* ultimo = inicio;
+		apuntador = 1;
+		if (!vacia()) {
+			if (locacion == 1) {
+				eliminarNodoInicio(locacion);
+			}
+			else if (locacion == tamanio ) {
+				eliminarNodoFinal(locacion);
+			}
+			else if (locacion >= tamanio) {
+				cout << "Posicion no existe" << endl;
+			}
+			else eliminarNodoMedio(locacion);
 		}
-		else if (locacion == tamanio - 1) {
-			eliminarNodoFinal(locacion);
-		}
-		else if (locacion >= tamanio) {
-			cout << "Posicion no existe" << endl;
-		}
-		else eliminarNodoMedio(locacion);
 	}
 	else cout << "Agrega una nota antes de eliminar" << endl;
+	
 }
 template <class Tareas>
 void Lista<Tareas>::eliminarNodoInicio(int locacion) {
-	Nodo<Tareas>* aux = inicio->getSiguiente();
-	Nodo<Tareas>* anterior = inicio;
+	Nodo<Tareas>* aux = inicio ;
 	Nodo<Tareas>* ultimo = inicio;
 	cout << "llegue al principio";
 	inicio = inicio->getSiguiente();
 	//delete aux;
+	//aux = inicio;
 	tamanio--;
 	tamanio--;
 	while (ultimo) {
@@ -88,7 +90,6 @@ void Lista<Tareas>::eliminarNodoMedio(int locacion) {
 		if (apuntador == locacion - 1) {
 			anterior->setSiguiente(aux->getSiguiente());
 			delete aux;
-			tamanio--;
 			tamanio--;
 			while (ultimo) {
 				if (apuntador == tamanio - 1) {
@@ -112,16 +113,22 @@ void Lista<Tareas>::eliminarNodoFinal(int locacion) {
 	Nodo<Tareas>* ultimo = inicio;
 	apuntador = 1;
 	while (aux) {
-		if (locacion == tamanio - 1) {
+		if (locacion == tamanio ) {
 			cout << "llegue al final";
 			while (ultimo) {
-				if (apuntador == tamanio - 3) {
+				if (apuntador == tamanio - 2) {
+					ultimo = ultimo->getSiguiente();
 					final = ultimo->getSiguiente();
 					cout << apuntador << " " << tamanio << endl;
 					cout << "Tarea:" << ultimo->getDatos() << endl;
 					cout << "Estatus:" << ultimo->getEstatus() << endl;
-					ultimo->setSiguiente(final);
-					tamanio--;
+					cout << "Tarea:" << final->getDatos() << endl;
+					cout << "Estatus:" << final->getEstatus() << endl;
+					
+					ultimo = ultimo->getSiguiente();
+					cout << "Tarea:" << ultimo->getDatos() << endl;
+					cout << "Estatus:" << ultimo->getEstatus() << endl;
+					delete ultimo;
 					tamanio--;
 					return;
 				}

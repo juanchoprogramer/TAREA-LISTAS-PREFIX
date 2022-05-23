@@ -15,24 +15,30 @@ Cuaderno :: Cuaderno(){
 void Cuaderno :: mostrarCuaderno(){
     Lista<string> Prueba;
     cout<<"numero de cuaderno:"<<id<<endl;
-            texto="a";
+            /*texto="a";
             nivel="a";
             Prueba.agregar(texto,nivel);
+			++Prueba;
             texto="b";
             nivel="b";
             Prueba.agregar(texto,nivel);
+			++Prueba;
             texto="c";
             nivel="c";
             Prueba.agregar(texto,nivel);
+			++Prueba;
             texto="d";
             nivel="d";
             Prueba.agregar(texto,nivel);
+			++Prueba;
             texto="|e";
             nivel="e";
             Prueba.agregar(texto,nivel);
+			++Prueba;
             texto="f";
             nivel="f";
             Prueba.agregar(texto,nivel);
+			++Prueba;*/
     while(ciclo!=0){
         cout<<"1.-AGREGAR\n2.-MOSTRAR\n3.-ELIMINAR\n4.-COMPLETAR"<<endl;
         cin>>opcion;
@@ -41,7 +47,7 @@ void Cuaderno :: mostrarCuaderno(){
             cout<<"Agregar"<<endl;
             setTexto();
             Prueba.agregar(texto,nivel);
-			//++Prueba;
+			++Prueba;
         break;
         case 2:
             cout<<"Mostrar"<<endl;
@@ -49,13 +55,7 @@ void Cuaderno :: mostrarCuaderno(){
             Prueba.mostrarLista();
         break;
         case 3:
-            Prueba.agregar(texto,nivel);
-            cout<<"Eliminar"<<endl;
-            cout<<"Posicion a eliminar:"<<endl;
-            cin>>eliminar;
-            Prueba.eliminarNodo(eliminar);
-			
-			//--Prueba;
+			--Prueba;
         break;
         case 4:
             cout<<"Completar"<<endl;
