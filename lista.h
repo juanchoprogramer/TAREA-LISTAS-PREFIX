@@ -1,4 +1,5 @@
 #include "nodo.h"
+using namespace std;
 #pragma once
 template <class Tareas>
 class Lista {
@@ -30,5 +31,16 @@ public:
 	void eliminarNodoMedio(int locacion);
 	void eliminarNodoFinal(int locacion);
 	void cambiarStatus(int locacion, Tareas valor);
+	Lista& operator ++() {
+		tamanio++;
+		return *this;
+	}
+	Lista operator --() {
+		int eliminar;
+		cout << "Posicion a eliminar:" << endl;
+		cin >> eliminar;
+		eliminarNodo(eliminar);
+		return *this;
+	}
 };
 
